@@ -1,0 +1,64 @@
+@font-face {
+    font-family: Noland-Bold;
+    src: url('Fontes/Noland-Bold.otf') format('otf');
+}
+
+@media (max-width: 600px) {
+    .container {
+      max-width: 100%; /* Define a largura máxima para 100% da largura do dispositivo */
+      padding: 0 10px; /* Ajuste o espaçamento interno para telas menores */
+    }
+  }
+
+* {
+    padding: 0;
+    border: 0;
+    font-family: Noland-Bold, sans-serif;
+}
+body { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #034f1b;
+  }
+  
+  #timer {
+    font-size: 24px;
+    text-align: center;
+    color: white;
+  }
+  
+  .caixa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+button {
+    margin: 30px;
+    padding: 17px 40px;
+    border-radius: 10px;
+    border: 0;
+    background-color: rgb(255, 56, 86);
+    letter-spacing: 1.5px;
+    font-size: 15px;
+    transition: all .3s ease;
+    box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
+    color: hsl(0, 0%, 100%);
+    
+    
+  }
+  
+   
+   button:hover {
+    box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
+   }
+   
+   button:active {
+    background-color: rgb(255, 56, 86);
+    /*50, 168, 80*/
+    box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 200ms;
+   }

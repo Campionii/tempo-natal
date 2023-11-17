@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contagem Regressiva para o Natal</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #timer {
+      font-size: 24px;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+    <div class="caixa">
+        <div id="timer">
+          Faltam <span id="dias"></span> dias, <span id="horas"></span> horas, <span id="minutos"></span> minutos e <span id="segundos"></span> segundos para o Natal!
+        </div>
+      
+        <button id="startTimer">Iniciar Timer</button>
+      </div>
+
+  <script>
+    let timerInterval;
+
+    function calcularTempoAteNatal() {
+      const agora = new Date();
+      const anoAtual = agora.getFullYear();
+      const natal = new Date(anoAtual, 11, 25);
+
+      if (agora > natal) {
+        natal.setFullYear(anoAtual + 1);
+      }
+
+      const diferencaTempo = natal.getTime() - agora.getTime();
+      const dias = Math.floor(diferencaTempo / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencaTempo % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencaTempo % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencaTempo % (1000 * 60)) / 1000);
+
+      return { dias, horas, minutos, segundos };
+    }
+
+    function atualizarTempo() {
+      const tempo = calcularTempoAteNatal();
+
+      document.getElementById('dias').textContent = tempo.dias;
+      document.getElementById('horas').textContent = tempo.horas;
+      document.getElementById('minutos').textContent = tempo.minutos;
+      document.getElementById('segundos').textContent = tempo.segundos;
+    }
+
+    function iniciarTimer() {
+      atualizarTempo();
+      timerInterval = setInterval(atualizarTempo, 1000);
+      document.getElementById('startTimer').disabled = true;
+    }
+
+    document.getElementById('startTimer').addEventListener('click', iniciarTimer);
+  </script>
+  
+</body>
+</html>
